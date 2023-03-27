@@ -1,4 +1,13 @@
 import 'package:flutter/material.dart';
+import 'globals.dart' as globals;
+
+void remove_from_menu(String item){
+  if (globals.menu.containsKey(item)){
+    globals.menu[item]-=1;
+  }if (globals.menu[item]==0){
+    globals.menu.removeWhere((key, value) => key == item);
+  }
+}
 
 class ShoppingCartPage extends StatefulWidget {
   const ShoppingCartPage({super.key, required this.title});
@@ -71,7 +80,27 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 children: [
-                  ListTile(
+                  for (String key in globals.menu.keys) ListTile(
+                    title: Text(
+                      '${globals.menu[key]}x ${key}',
+                      style: Theme.of(context).textTheme.titleLarge,
+                    ),
+                    trailing: IconButton(
+                      onPressed: (){
+                        remove_from_menu(key);
+                        _incrementCounter();
+                      }, 
+                      icon: const Icon(
+                        Icons.cancel,
+                        color: Color(0xFF303030),
+                        size: 20,
+                    ),
+                    ),
+                    tileColor: const Color(0xFFF5F5F5),
+                    dense: false,
+                  )
+                  
+                  /*ListTile(
                     title: Text(
                       '1 Beef Wellington',
                       style: Theme.of(context).textTheme.titleLarge,
@@ -135,7 +164,7 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
                     ),
                     tileColor: const Color(0xFFF5F5F5),
                     dense: false,
-                  ),
+                  ),*/
                 ],
               ),
             ]),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Food.dart';
 import 'Shopping Cart.dart';
+import 'globals.dart' as globals;
 
 void main() {
   runApp(const MyApp());
@@ -8,7 +9,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,6 @@ class MyHomePage extends StatefulWidget {
   // always marked "final".
 
   final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }

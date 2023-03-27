@@ -1,4 +1,13 @@
 import 'package:flutter/material.dart';
+import 'globals.dart' as globals;
+
+void add_to_menu(String item){
+  if (globals.menu.containsKey(item)){
+    globals.menu[item]+=1;
+  }else{
+    globals.menu[item]=1;
+  }
+}
 
 class FoodPage extends StatefulWidget {
   const FoodPage({super.key, required this.title});
@@ -71,29 +80,23 @@ class _FoodPageState extends State<FoodPage> {
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 children: [
-                  ListTile(
+                  for (String item in globals.food_list) ListTile(
                     title: Text(
-                      'Chicken Wings',
+                      item,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    trailing: const Icon(
-                      Icons.add,
-                      color: Color(0xFF303030),
-                      size: 20,
+                    trailing: IconButton(
+                      onPressed: (){
+                        add_to_menu(item);
+                      }, 
+                      icon: const Icon(
+                        Icons.add,
+                        color: Color(0xFF303030),
+                        size: 20,
+                      ),
                     ),
                     tileColor: const Color(0xFFF5F5F5),
                     dense: false,
-                  ),
-                  ListTile(
-                    title: Text(
-                      'Onion Rings',
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    trailing: const Icon(
-                      Icons.add,
-                      color: Color(0xFF303030),
-                      size: 20,
-                    ),
                   )
                 ],
               )
