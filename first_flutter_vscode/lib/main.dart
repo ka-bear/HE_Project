@@ -1,4 +1,6 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'Camera.dart';
 import 'Food.dart';
 import 'Shopping Cart.dart';
 import 'globals.dart' as globals;
@@ -14,6 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -138,8 +141,11 @@ class _MyHomePageState extends State<MyHomePage> {
             Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                 child: TextButton(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      var value = await availableCameras();
+                      print(value);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => CameraPage(cameras: value)));
                     },
                     style: TextButton.styleFrom(
                         fixedSize: const Size(400, 50),

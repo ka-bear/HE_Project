@@ -171,9 +171,12 @@ class _ShoppingCartPageState extends State<ShoppingCartPage> {
       ),
 
       floatingActionButton: FloatingActionButton(
-          onPressed: _incrementCounter,
-          tooltip: 'Speak',
-          child: const Icon(Icons.mic),
+          onPressed: (){
+            globals.menu.clear();
+            _incrementCounter();
+          }, 
+          tooltip: 'Clear Cart',
+          child: const Icon(Icons.delete),
           elevation:
               8), // This trailing comma makes auto-formatting nicer for build methods.
     );
