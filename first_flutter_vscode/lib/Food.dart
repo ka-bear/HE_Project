@@ -80,7 +80,7 @@ class _FoodPageState extends State<FoodPage> {
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 children: [
-                  for (String item in globals.food_list) ListTile(
+                  for (String item in globals.food_list_new[widget.title]!) ListTile(
                     title: Text(
                       item,
                       style: Theme.of(context).textTheme.titleLarge,

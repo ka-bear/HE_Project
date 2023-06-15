@@ -36,7 +36,7 @@ class _CameraPageState extends State<CameraPage> {
       return null;
     }
     try {
-      await _cameraController.setFlashMode(FlashMode.off);
+      //await _cameraController.setFlashMode(FlashMode.off);
       XFile picture = await _cameraController.takePicture();
       Navigator.push(
           context,
@@ -66,7 +66,9 @@ class _CameraPageState extends State<CameraPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
+        appBar: AppBar(
+        title: Text("Camera"),
+      ),body: SafeArea(
       child: Stack(children: [
         (_cameraController.value.isInitialized)
             ? CameraPreview(_cameraController)
