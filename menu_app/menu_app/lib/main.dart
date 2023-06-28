@@ -83,7 +83,9 @@ class _HomePageState extends State<HomePage> {
             FloatingActionButton(
               onPressed: () {
                 if (_imageFile != null) {
-                  speak('Image captured');
+                  speak('Hello World');
+                }else{
+                  speak('Take a photo or upload an image first.');
                 }
               },
               child: Icon(Icons.volume_up),
